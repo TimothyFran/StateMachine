@@ -25,7 +25,7 @@ Add this to `platformio.ini`:
 
 ```ini
 lib_deps =
-    https://github.com/timofran/StateMachine.git
+    https://github.com/TimothyFran/StateMachine.git
 ```
 
 Or copy the `StateMachine` folder into your project's `lib/` directory.
