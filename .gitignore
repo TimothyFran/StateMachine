@@ -1,0 +1,37 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piosenvs/
+*.o
+*.a
+*.so
+.scons*
+compile_commands.json
+.clang_complete
+.gcc-flags.json
+
+# Arduino IDE
+build/
+*.elf
+*.hex
+*.eep
+*.ino.cpp
+*.ino.elf
+
+# VSCode
+.vscode/
+.history/
+
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Build
+*.o
+*.d
+*.a
+.deps/
+.objs/

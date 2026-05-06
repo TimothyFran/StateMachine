@@ -1,0 +1,35 @@
+# Syntax Highlighting for StateMachine Library
+# https://github.com/yourusername/StateMachine
+
+# Classes
+StateMachine	KEYWORD1
+BaseState	KEYWORD1
+StateExitCode	KEYWORD1
+
+# Methods
+registerStates	KEYWORD2
+initialize	KEYWORD2
+handleCurrentState	KEYWORD2
+getCurrentStateName	KEYWORD2
+getCurrentStateIndex	KEYWORD2
+getStateCount	KEYWORD2
+forceNextStateTransition	KEYWORD2
+forceStateTransition	KEYWORD2
+boot	KEYWORD2
+handle	KEYWORD2
+close	KEYWORD2
+getStateName	KEYWORD2
+isStateTimedOut	KEYWORD2
+getElapsedTime	KEYWORD2
+
+# Enums
+CONTINUE	LITERAL
+PROCEED_TO_NEXT	LITERAL
+TIMED_OUT	LITERAL
+ERROR	LITERAL
+FAILED	LITERAL
+
+# Constants
+SHOULD_HALT_ON_TIMEOUT	LITERAL
+STATUS_CHECK_INTERVAL	LITERAL
+STATE_TIMEOUT	LITERAL
