@@ -16,31 +16,6 @@
  * 
  * Derived classes can have different values by calling the protected constructor
  * with specific parameters in their initialization list.
- * 
- * @example
- * @code
- * class MyCustomState : public BaseState {
- * public:
- *     // Constructor with custom timeout of 30 seconds
- *     MyCustomState() : BaseState(1000, 30000, true) {}
- *     
- *     void boot() override {
- *         BaseState::boot();  // Call base class boot
- *         // Custom initialization...
- *     }
- *     
- *     StateExitCode handle() override {
- *         // State logic...
- *         return StateExitCode::CONTINUE;
- *     }
- *     
- *     void close() override {
- *         // Cleanup...
- *     }
- *     
- *     const char* getStateName() const override { return "MY_STATE"; }
- * };
- * @endcode
  */
 class BaseState {
 public:

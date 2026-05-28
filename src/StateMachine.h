@@ -19,23 +19,6 @@
  * - Return to previous state (on failure)
  * - Optional timeout for each state
  * - Detailed logging for debugging
- * 
- * @example
- * @code
- * StateMachine stateMachine;
- * 
- * std::vector<std::unique_ptr<BaseState>> states;
- * states.push_back(std::make_unique<StateA>());
- * states.push_back(std::make_unique<StateB>());
- * 
- * stateMachine.registerStates(std::move(states));
- * stateMachine.initialize();
- * 
- * // In main loop
- * void loop() {
- *     stateMachine.handleCurrentState();
- * }
- * @endcode
  */
 class StateMachine {
 
