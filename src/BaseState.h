@@ -36,6 +36,14 @@ protected:
     explicit BaseState(unsigned long statusCheckInterval, unsigned long stateTimeout, bool shouldHaltOnTimeout)
         : STATUS_CHECK_INTERVAL(statusCheckInterval), STATE_TIMEOUT(stateTimeout), SHOULD_HALT_ON_TIMEOUT(shouldHaltOnTimeout) {}
 
+    /**
+     * @brief Set the relative offset for state jumping when returning JUMP_TO_STATE exit code
+     * @param offset Relative state offset to apply to current state index (e.g., 1 = next state, -1 = previous state, 0 = current state)
+     */
+    void setJumpOffset(int8_t offset) {
+        jumpOffset = offset;
+    }
+
 public:
 
     /**
@@ -44,6 +52,7 @@ public:
      */
     virtual void boot() {
         bootedAt = millis();
+        jumpOffset = 0;
     }
 
     /**
@@ -91,6 +100,12 @@ public:
      */
     const bool SHOULD_HALT_ON_TIMEOUT;
 
+    /**
+     * @brief Get the relative offset for state jumping when returning JUMP_TO_STATE exit code
+     * @return Relative state offset to apply to current state index (e.g., 1 = next state, -1 = previous state, 0 = current state)
+     */
+    const int8_t getJumpOffset() const { return jumpOffset; }
+
 protected:
     unsigned long lastStatusCheck = 0;
     unsigned long bootedAt = 0;
@@ -98,4 +113,7 @@ protected:
     // Read-only parameters set in constructor
     const unsigned long STATUS_CHECK_INTERVAL;
     const unsigned long STATE_TIMEOUT;
+
+    // Used when returning JUMP_TO_STATE exit code (relative offset, not absolute index)
+    int8_t jumpOffset = 0;
 };

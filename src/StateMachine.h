@@ -92,4 +92,22 @@ private:
      */
     void transitionToState(uint8_t index);
 
+    /**
+     * @brief Check if a state exists at the given index
+     * @param index Index to check
+     * @return true if state exists, false otherwise
+     */
+    bool getStateExists(uint8_t index) const {
+        return index < registeredStates.size();
+    }
+
+    /**
+     * @brief Check if a state index is valid (handles negative offsets)
+     * @param index Index to check (can be negative)
+     * @return true if index is non-negative and within bounds
+     */
+    bool isValidStateIndex(int16_t index) const {
+        return index >= 0 && index < (int16_t)registeredStates.size();
+    }
+
 };

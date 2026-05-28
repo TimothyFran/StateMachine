@@ -41,5 +41,12 @@ enum class StateExitCode {
      * Transitions back to the previous state. Use for recoverable errors.
      * If already in first state, transitions to first state again.
      */
-    FAILED = 4
+    FAILED = 4,
+
+    /**
+     * @brief Transition to a specific state by index
+     * The current state's close() will be called, then target state's boot()
+     * The target state index is determined by the StateMachine based on the returned code.
+     */
+    JUMP_TO_STATE = 5
 };
