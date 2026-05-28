@@ -48,7 +48,7 @@ void StateMachine::handleCurrentState() {
         case StateExitCode::TIMED_OUT:
             if (currentState->SHOULD_HALT_ON_TIMEOUT) {
                 // Critical timeout - restart device
-                ESP.restart();
+                //ESP.restart();
             } else {
                 // Non-critical timeout - transition to next state
                 transitionToNextState();
