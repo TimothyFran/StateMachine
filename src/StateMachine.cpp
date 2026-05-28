@@ -70,7 +70,7 @@ void StateMachine::handleCurrentState() {
             }
             break;
 
-        case StateExitCode::JUMP_TO_STATE:
+        case StateExitCode::JUMP_TO_STATE: {
             int8_t jumpOffset = currentState->getJumpOffset();
             int16_t targetStateIndex = currentStateIndex + jumpOffset;
             
@@ -78,6 +78,7 @@ void StateMachine::handleCurrentState() {
                 transitionToState((uint8_t)targetStateIndex);
             }
             break;
+        }
 
         case StateExitCode::CONTINUE:
             // No action - state continues
