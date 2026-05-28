@@ -14,6 +14,7 @@ void StateMachine::registerStates(std::vector<std::unique_ptr<BaseState>> states
     }
     
     currentStateIndex = 0;
+    currentState = nullptr;
 }
 
 void StateMachine::initialize() {
@@ -24,7 +25,7 @@ void StateMachine::initialize() {
     
     // Start first registered state
     currentStateIndex = 0;
-    currentState = std::move(registeredStates[currentStateIndex]);
+    currentState = registeredStates[currentStateIndex].get();
     if (currentState) {
         currentState->boot();
     }
@@ -113,7 +114,6 @@ void StateMachine::transitionToNextState() {
     
     // Cleanup current state
     currentState->close();
-    currentState.reset();
     
     // Check if there are more states to execute
     if (currentStateIndex < registeredStates.size()) {
@@ -132,12 +132,11 @@ void StateMachine::transitionToState(uint8_t index) {
     // Cleanup current state
     if (currentState) {
         currentState->close();
-        currentState.reset();
     }
     
     // Transition to specified state
     currentStateIndex = index;
-    currentState = std::move(registeredStates[currentStateIndex]);
+    currentState = registeredStates[currentStateIndex].get();
     if (currentState) {
         currentState->boot();
     }

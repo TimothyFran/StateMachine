@@ -77,7 +77,7 @@ public:
     void forceStateTransition(uint8_t index);
 
 private:
-    std::unique_ptr<BaseState> currentState;
+    BaseState* currentState;
     std::vector<std::unique_ptr<BaseState>> registeredStates;
     uint8_t currentStateIndex;
     
